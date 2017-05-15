@@ -6,7 +6,7 @@ var btt = document.getElementById('back-to-top'),
     scrollPos, docHeight;
 
 // Calculate the document height
-docHeight = Math.max(body.scrollHeight, body.offsetHeight, docElem.clientHeight, docElem.scrollHeight, docELem.offsetHeight);
+docHeight = Math.max(body.scrollHeight, body.offsetHeight, docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
 if (docHeight != 'undefined') {
   offset = docHeight / 4;
 }
@@ -16,4 +16,15 @@ window.addEventListener('scroll', function(event) {
   scrollPos = body.scrollTop || docElem.scrollTop;
 
   btt.className = (scrollPos > offset) ? 'visible' : '';
+});
+
+// Add click event listener
+btt.addEventListener('click', function(event) {
+  event.preventDefault();
+
+  if(isFireFox) {
+    docElem.scrollTop = 0;
+  } else {
+    body.scrollTop = 0;
+  }
 });
