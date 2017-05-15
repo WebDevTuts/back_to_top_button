@@ -10,3 +10,10 @@ docHeight = Math.max(body.scrollHeight, body.offsetHeight, docElem.clientHeight,
 if (docHeight != 'undefined') {
   offset = docHeight / 4;
 }
+
+// Add scroll event listener
+window.addEventListener('scroll', function(event) {
+  scrollPos = body.scrollTop || docElem.scrollTop;
+
+  btt.className = (scrollPos > offset) ? 'visible' : '';
+});
